@@ -14,7 +14,7 @@ Bu proje kapsamında aşağıdaki adımlar gerçekleştirilmiştir:
 
 ## 🚀 Teknolojiler
 
-Java 26 · Spring Boot · Spring Security · jjwt 0.12.6 · Maven
+Java 26 · Spring Boot 4.0.6 · Spring Security · jjwt 0.12.6 · Maven
 
 ## ⚙️ Kurulum ve Çalıştırma
 
@@ -34,8 +34,6 @@ JWT_SECRET=buraya-gizli-ve-uzun-bir-anahtar-yazin
 JWT_ACCESS_EXPIRATION=3600000
 JWT_REFRESH_EXPIRATION=604800000
 ```
-
-> ⚠️ `.env` dosyasını asla Git'e commit etmeyin. `.gitignore` dosyanızda `.env` satırının bulunduğundan emin olun.
 
 Bu değişkenler `application.properties` içinde şu şekilde referans alınmaktadır:
 
