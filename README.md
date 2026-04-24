@@ -27,20 +27,26 @@ cd refresh-token-jwt
 
 ### 2. `.env` dosyası oluşturun
 
-Proje dizininde bir `.env` dosyası oluşturup aşağıdaki değişkeni tanımlayın:
+Proje dizininde bir `.env` dosyası oluşturun. `JWT_SECRET` değeri Base64 encoded olmalıdır, aşağıdaki komutlarla üretebilirsiniz:
 
-```env
-JWT_SECRET=buraya-gizli-ve-uzun-bir-anahtar-yazin
-JWT_ACCESS_EXPIRATION=3600000
-JWT_REFRESH_EXPIRATION=604800000
+```bash
+# Linux / macOS
+openssl rand -base64 64
+
+# Windows (PowerShell)
+[Convert]::ToBase64String((1..64 | ForEach-Object { [byte](Get-Random -Max 256) }))
 ```
 
-Bu değişkenler `application.properties` içinde şu şekilde referans alınmaktadır:
+Üretilen değeri `.env` dosyasına yapıştırın:
+
+```env
+JWT_SECRET=buraya-uretilen-base64-degeri-yapistirin
+```
+
+Bu değişken `application.properties` içinde şu şekilde referans alınmaktadır:
 
 ```properties
 jwt.secret=${JWT_SECRET}
-jwt.access.expiration=${JWT_ACCESS_EXPIRATION:3600000}
-jwt.refresh.expiration=${JWT_REFRESH_EXPIRATION:604800000}
 ```
 
 | Değişken | Açıklama | Varsayılan |
